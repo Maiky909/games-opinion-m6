@@ -1,25 +1,31 @@
 <template>
   <div>
-    <h1>Lista de Juegos Disponibles</h1>
-    <div class="games-list">
+    <h1>List of Available Games</h1>
+
+    <!-- Mostrar el Spinner mientras loading es true -->
+    <Spinner v-if="loading" />
+
+    <!-- Mostrar la lista de juegos una vez cargados -->
+    <div v-else class="games-list">
       <GameCard v-for="game in games" :key="game.id" :game="game" />
     </div>
   </div>
 </template>
 
 <script>
-// import NavBar from "../components/NavBar.vue";
 import GameCard from "../components/GameCard.vue";
+import Spinner from "../components/Spinner.vue"; // Importar el spinner
 
 export default {
   name: "Home",
   components: {
-    // NavBar,
     GameCard,
+    Spinner,
   },
   data() {
     return {
       games: [], // Lista de juegos
+      loading: true, // Estado de carga
     };
   },
   async mounted() {
@@ -33,6 +39,8 @@ export default {
       this.games = data.results; // Asignamos los juegos obtenidos al estado
     } catch (error) {
       console.error("Error al obtener los juegos:", error);
+    } finally {
+      this.loading = false; // Desactivar el spinner después de cargar los datos
     }
   },
 };

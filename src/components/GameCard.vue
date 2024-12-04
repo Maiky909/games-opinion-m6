@@ -2,12 +2,17 @@
   <div class="game-card">
     <img :src="game.background_image" alt="Game Image" class="game-image" />
     <h3>{{ game.name }}</h3>
-    <p><b>Rating:</b> {{ game.rating }}</p>
+    <p><b>Rating:</b> {{ game.rating }} <i class="bi bi-star-fill star"></i></p>
     <p><b>Released:</b> {{ game.released }}</p>
-    <p><b>Updated</b> {{ game.updated }}</p>
+    <p><b>Updated:</b> {{ game.updated }}</p>
     <div class="buttons">
-      <button @click="Opinar">Opinar</button>
-      <button>Like</button>
+      <button class="btn btn-primary" @click="Opinar">
+        Share Your Opinion
+      </button>
+
+      <button @click="toggleFavorite" class="btn btn-outline-danger">
+        <i :class="isFavorite ? 'bi bi-heart-fill' : 'bi bi-heart'"></i>
+      </button>
     </div>
   </div>
 </template>
@@ -21,12 +26,20 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      isFavorite: false, // Estado del botón de favorito
+    };
+  },
   methods: {
     Opinar() {
-      this.$router.push(`/opiniones/${this.game.slug}`);
+      this.$router.push(`/opinions/${this.game.id}`);
     },
     FormatearFecha(fecha) {
       return new Date(fecha).toLocaleDateString();
+    },
+    toggleFavorite() {
+      this.isFavorite = !this.isFavorite; // Cambia entre favorito y no favorito
     },
   },
 };
@@ -57,6 +70,9 @@ export default {
 .game-card:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  background-color: #f5f5f5;
+  transition: all 0.3s ease;
 }
 
 .game-image {
@@ -64,25 +80,18 @@ export default {
   height: 200px;
   border-radius: 8px;
   margin-bottom: 1rem;
+  object-fit: cover;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .buttons {
   display: flex;
   justify-content: space-between;
-}
-
-button {
   margin-top: 1rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
 }
-
-button:hover {
-  background-color: #0056b3;
+.star {
+  color: gold;
+  margin-left: 0.1rem;
+  font-size: 1.2rem;
 }
 </style>

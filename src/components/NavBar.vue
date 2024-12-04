@@ -1,11 +1,36 @@
 <template>
-  <nav class="navbar">
-    <ul class="navbar-list">
-      <li class="navbar-item">Games Opinions</li>
-      <li class="navbar-item">
-        <router-link to="/">Home</router-link>
-      </li>
-    </ul>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <i class="bi bi-joystick"></i> Games Opinions
+      </a>
+
+      <!-- Botón de colapso para pantallas pequeñas -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menú de navegación -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <router-link
+              v-if="$route.path !== '/'"
+              to="/"
+              class="nav-link active">
+              <b> <i class="bi bi-house-door-fill"></i> Home</b>
+            </router-link>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
 </template>
 
@@ -17,32 +42,7 @@ export default {
 
 <style>
 .navbar {
-  background-color: #333;
-  color: white;
-  padding: 1.5rem;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
-
-.navbar-list {
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.navbar-item {
-  text-decoration: none;
-}
-
-.navbar-item a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.navbar-item a:hover {
-  text-decoration: underline;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+  padding: 1rem 0;
 }
 </style>
