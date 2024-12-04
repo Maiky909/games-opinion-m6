@@ -1,11 +1,35 @@
-# Vue 3 + Vite
+# Proyecto Vue Games Opinions
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+---
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+Este proyecto esta realiazdo en Vue + Vite.
 
-Para Iniciar el Proyecto:
+Vite es una herramienta de compilación que permite que sexperiencia de desarrollo más rápida y ágil para proyectos web modernos. [Ver más sobre Vite](https://es.vite.dev/guide/#descripcion-general)
 
-npm i
+### Como Ejecutar el Proyecto :
 
-npm run dev
+---
+
+1. **Instalar los paquetes necesarios**
+
+   Para Instalar los paquetes y dependencias necesarios del proyecto debemos ejecutar el siguiente comando:
+
+   ```bash
+   npm i
+   ```
+
+2. **Agregar el archivo .env**
+
+   Debemos agregar el archivo .env el cual tiene nuestra key de la api de Rawg.io, este archivo debe estar en la raíz de nuestro proyecto, como se muestra en la image:
+
+   ![alt text](image.png)
+
+3. **Iniciar el Servidor**
+
+   Una vez ya tenemos completado los pasos 1 y 2, podremos ejecutar nuestro proyecto sin problemas, para esto ejecutamos el siguiente comando:
+
+   ```bash
+   npm run dev
+   ```
+
+Con esos pasos ya estaremos listo para ejecutar y probar la aplicación, en nuestro ambiente local http://localhost8080
