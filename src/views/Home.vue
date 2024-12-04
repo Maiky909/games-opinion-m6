@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-5">
     <h1>List of Available Games</h1>
 
     <!-- Mostrar el Spinner mientras loading es true -->
